@@ -2,12 +2,16 @@ import { Header } from "../Components/Layout";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import CountryCard from "../Components/Cards/CountryCard";
 
 interface Country {
   country_id: number;
   country_name: string;
+  country_img: string;
   continent_id: number;
 }
+
+
 
 export default function Continent() {
   const { continentName, continentId } = useParams<{ continentName: string | undefined; continentId: string | undefined }>();
@@ -44,23 +48,17 @@ export default function Continent() {
         title={formattedContinentName!}
       />
       <h1 className="my-20 text-center text-5xl">{formattedContinentName}</h1>
-      {countries.length > 0 ? (
-        
-        
-        countries.filter(country => country.continent_id === Number(continentId))
-        .map((country, index) => (
-         
-         
-          <div key={index}>
-            <h1>{country.country_name}</h1>
-          </div>
-        
-         
-          
-        ))
-      ) : (
-        <h1>No data available</h1>
-      )}
+      <section className="w-container80 flex justify-between mx-auto mb-10">
+        {countries.length > 0 ? (
+          countries
+            .filter((country) => country.continent_id === Number(continentId))
+            .map((country, index) => (
+              <CountryCard key={index} country={country} index={index} />
+            ))
+        ) : (
+          <h1>No data available</h1>
+        )}
+      </section>
       <h1 className="my-20 text-center text-5xl">{continentId}</h1>
     </>
   );
