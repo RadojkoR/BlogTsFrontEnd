@@ -14,18 +14,21 @@ interface CountryProps {
 }
 
 function CountryCard({ country, index }: CountryProps) {
-    console.log("country image", country.country_img);
+   const countryName = country.country_name;
+   const countryImg = country.country_img;
+   const countryId = country.country_id;
+   const formattedCountryName = countryName.replace(/\s+/g, "");
     
   return (
-     <article className="w-container20 flex justify-center items-center mx-auto border-2 border-blue-300">
+    <article className="w-container20 flex justify-center items-center mx-auto border-2 border-blue-300">
       <NavLink
-        to={country.country_name}
+        to={`${formattedCountryName}/${countryId}`}
         className="max-w-sm rounded h-full flex flex-col justify-between items-center overflow-hidden shadow-lg border-2 border-gray-300"
         key={index}
       >
-        <img className="w-full mb-10" src={country.country_img} alt="Europe image" />
+        <img className="w-full mb-10" src={countryImg} alt="Europe image" />
         <h3 className="capitalize font-bold text-3xl pb-5">
-          {country.country_name.toUpperCase()}
+          {countryName.toUpperCase()}
         </h3>
       </NavLink>
     </article>
