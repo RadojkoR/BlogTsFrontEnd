@@ -34,14 +34,10 @@ function Destinations() {
       <section className="w-container80 flex justify-between mx-auto mb-10">
         {data.length > 0 ? (
           data.map((continent, index) => (
-            <ContinentCard
-              key={index}
-              continent={continent}
-              index={index}
-            />
+            <ContinentCard key={index} continent={continent} index={index} />
           ))
         ) : (
-          <h1>No data available</h1>
+          <h1 className="my-20 text-center text-5xl">No data available</h1>
         )}
       </section>
     </>

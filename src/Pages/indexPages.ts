@@ -6,5 +6,6 @@ import TravelTips from "./TravelTips";
 import LogIn from "./LogIn";
 import Continent from "./Continent";
 import Country from "./Country";
+import BlogItem from "./BlogItem";
 
-export {Home, About, Destinations, Continent, Country, Blog, TravelTips, LogIn}
+export {Home, About, Destinations, Continent, Country,BlogItem, Blog, TravelTips, LogIn}
