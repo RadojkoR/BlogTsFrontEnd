@@ -15,7 +15,7 @@ export default function Continent() {
   continentName.charAt(0).toLocaleUpperCase() + continentName.slice(1) : "";
 
   const [countries, setCountries] = useState<Country[]>([]);
-  const [loading,setLoading] = useState(true);
+  // const [loading,setLoading] = useState(true);
 
   useEffect(() => {
     const fetchCountries = async() => {
@@ -28,9 +28,10 @@ export default function Continent() {
         }catch(error){
           console.error("Error fetching countries:", error);
           
-        }finally{
-          setLoading(true)
         }
+        // finally{
+        //   setLoading(true)
+        // }
       }
     };
     fetchCountries()
