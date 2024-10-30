@@ -1,3 +1,4 @@
+import BlogCard from "../Components/Cards/BlogCard";
 import { Header } from "../Components/Layout";
 import { useParams } from "react-router-dom";
 
@@ -15,6 +16,7 @@ function Country() {
       />
       <h2 className="my-20 text-center text-5xl">{countryId}</h2>
       <h1 className="my-20 text-center text-5xl">{countryName.toLocaleUpperCase()}</h1>
+      <BlogCard />
     </>
   );
 }
