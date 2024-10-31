@@ -18,9 +18,11 @@ interface BlogProps {
 
 function BlogCard({blog}: BlogProps) {
     const blogTitle = blog.blog_title;
-    const formattedBlogTitle = blogTitle.replace(/\s+(.)/g, (char) => char.toUpperCase())
+    const formattedBlogTitle = blogTitle.replace(/\s+(.)/g, (_,char) => char.toUpperCase())
                                         .replace(/^\w/, (char) => char.toLocaleLowerCase())
                                         .replace(/[.,'"::?!]/g, "");
+                                        console.log("formatted blog Title", formattedBlogTitle);
+                                        
   return (
     <article className="w-container20 flex justify-center items-center mx-auto border-2 border-blue-300">
       <NavLink
