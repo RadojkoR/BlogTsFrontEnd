@@ -67,7 +67,7 @@ if (!blogTitle) {
           )
           .map((blog, index) => (
             <div key={index}>
-              <h1 key={index} className="my-20 text-center text-5xl">
+              <h1 className="my-20 text-center text-5xl">
                 {/* {blog.blog_title.toLocaleUpperCase()} */}
                 {blog.blog_title}
               </h1>
