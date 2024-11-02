@@ -8,7 +8,7 @@ interface HeaderProps {
 const Header = ({className, title}: HeaderProps) => {
   return (
     <header
-      className={`${className} flex justify-center items-center w-full h-screen bg-cover bg-bottom bg-no-repeat homeHedaerContainer`}
+      className={`${className} flex justify-center items-center w-full bg-cover bg-bottom bg-no-repeat homeHedaerContainer`}
     >
       {/* <img className="w-full h-auto" src={HomeImg} alt="" /> */}
       <h1 className="text-white text-9xl font-caveat">{title}</h1>

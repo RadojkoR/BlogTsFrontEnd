@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 interface Blog {
   blog_id: number;
-  blog_title: string;
+  title: string;
   blog_img: string;
   continent_id: number;
   country_id: number;
@@ -36,7 +36,7 @@ const [blogs, setBlogs] = useState<Blog[]>([]);
 useEffect(() => {
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("http://132.145.97.119:3001/blogs");
+      const response = await axios.get("http://129.153.55.190:3001/blogs");
       console.log("blogsItem data", response.data);
       setBlogs(response.data);
     } catch (error) {
@@ -53,7 +53,7 @@ if (!blogTitle) {
   return (
     <>
       <Header
-        className="bg-bgHeaderBlog bg-contain bg-center"
+        className="bg-bgHeaderBlog h-60vh bg-contain bg-center"
         title={blogTitle.toLocaleUpperCase()}
       />
       {/* <h2 className="my-20 text-center text-5xl">{blog_Id}</h2> */}
@@ -69,7 +69,7 @@ if (!blogTitle) {
             <div key={index}>
               <h1 className="my-20 text-center text-5xl">
                 {/* {blog.blog_title.toLocaleUpperCase()} */}
-                {blog.blog_title}
+                {blog.title}
               </h1>
               <section className="w-container80 mx-auto">
                 <p className="text-xl">{blog.blog_text}</p>

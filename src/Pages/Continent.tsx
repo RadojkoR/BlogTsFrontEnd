@@ -25,7 +25,7 @@ export default function Continent() {
     const fetchCountries = async() => {
       if(continentName){
         try{
-          const response = await axios.get(`http://132.145.97.119:3001/destination`)
+          const response = await axios.get(`http://129.153.55.190:3001/destination`)
           console.log("countries data", response.data);
           setCountries(response.data)
           
@@ -44,7 +44,7 @@ export default function Continent() {
   return (
     <>
       <Header
-        className="bg-bgHeaderBlog bg-contain bg-center"
+        className="bg-bgHeaderBlog h-screen bg-contain bg-center"
         title={formattedContinentName!}
       />
       <h1 className="my-20 text-center text-5xl">{formattedContinentName}</h1>

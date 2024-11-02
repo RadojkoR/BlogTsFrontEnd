@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 interface Blog {
     blog_id: number;
     blog_img: string;
-    blog_title: string;
+    title: string;
     blog_text: string;
     continent_id: number;
     country_id: number;
@@ -17,7 +17,7 @@ interface BlogProps {
 }
 
 function BlogCard({blog}: BlogProps) {
-    const blogTitle = blog.blog_title;
+    const blogTitle = blog.title;
     const formattedBlogTitle = blogTitle.replace(/\s+(.)/g, (_,char) => char.toUpperCase())
                                         .replace(/^\w/, (char) => char.toLocaleLowerCase())
                                         .replace(/[.,'"::?!]/g, "");
@@ -28,9 +28,9 @@ function BlogCard({blog}: BlogProps) {
         to={formattedBlogTitle}
         className="max-w-sm rounded h-full flex flex-col justify-between items-center overflow-hidden shadow-lg border-2 border-gray-300"
       >
-        <img className="w-full mb-10" src="#" alt="Europe image" />
+        <img className="w-full mb-10" src="#" alt={`${blog.title} image`} />
         <h3 className="capitalize font-bold text-3xl pb-5">
-          {blog.blog_title}
+          {blog.title}
         </h3>
       </NavLink>
     </article>

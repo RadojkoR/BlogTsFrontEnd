@@ -11,6 +11,11 @@ export default {
         'bgHeaderAbout': "url(./Assets/Images/About-Header.webp)",
         'bgHeaderDestination': "url(./Assets/Images/herceg_novi-destinationHeader.webp)",
         'bgHeaderBlog': "url(./Assets/Images/HeaderBlog.webp)",
+        'serbiaHeaderBlog': "url(./Assets/Images/serbiaHeader.webp)",
+        'montenegroHeaderBlog': "url(./Assets/Images/herceg_novi-destinationHeader.webp)",
+        'southkoreaHeaderBlog': "url(./Assets/Images/southKoreaHeader.webp)",
+        'japanHeaderBlog': "url(./Assets/Images/japanHeader.webp)",
+        'canadaHeaderBlog': "url(./Assets/Images/canadaHeader.webp)",
       },
       backgroundColor: {
         'nav': '#1d2228',
@@ -28,11 +33,20 @@ export default {
           '25rem': '25rem'
       },
        height: {
-        '80vh': '80vh'
+        '80vh': '80vh',
+        '70vh' : '70vh',
+        '60vh': '60vh'
     }
 
     },
   },
+   safelist: [
+    'bg-serbiaHeaderBlog',
+    'bg-montenegroHeaderBlog',
+    'bg-southkoreaHeaderBlog',
+    'bg-japanHeaderBlog',
+    'bg-canadaHeaderBlog'
+  ],
   plugins: [],
 }
 

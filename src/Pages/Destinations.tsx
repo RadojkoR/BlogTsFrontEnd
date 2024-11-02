@@ -10,7 +10,7 @@ function Destinations() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://132.145.97.119:3001/");
+        const response = await axios.get("http://129.153.55.190:3001");
         setData(response.data.continentsData);
         console.log("destination Data",response.data.continentsData);
       } catch (error) {
@@ -29,7 +29,7 @@ function Destinations() {
 
   return (
     <>
-      <Header className="bg-bgHeaderDestination" title="Destination" />
+      <Header className="bg-bgHeaderDestination h-screen" title="Destination" />
       <h1 className="my-20 text-center text-5xl">Destinations</h1>
       <section className="w-container80 flex justify-between mx-auto mb-10">
         {data.length > 0 ? (

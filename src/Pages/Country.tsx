@@ -6,7 +6,7 @@ import axios from "axios";
 
 interface Blog {
   blog_id: number;
-  blog_title: string;
+  title: string;
   blog_img: string;
   continent_id: number;
   country_id: number;
@@ -24,7 +24,7 @@ function Country() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://132.145.97.119:3001/blogs");
+        const response = await axios.get("http://129.153.55.190:3001/blogs");
         console.log("blogs data", response.data);
         setBlogs(response.data);
       } catch (error) {
@@ -40,24 +40,24 @@ function Country() {
 
   return (
     <>
+      {console.log("Ime drzave", countryName)}
       <Header
-        className="bg-bgHeaderBlog bg-contain bg-center"
+        className={`bg-${countryName}HeaderBlog bg-contain bg-center h-70vh`}
         title={countryName.toLocaleUpperCase()}
       />
-      <h2 className="my-20 text-center text-5xl">{countryId}</h2>
       <h1 className="my-20 text-center text-5xl">
         {countryName.toLocaleUpperCase()}
       </h1>
-
-      {blogs.length >
-        0 ?(
-          blogs.filter((blog)=>blog.country_id === Number(countryId)).map((blog, index) => (
+      {blogs.length > 0 ? (
+        blogs
+          .filter((blog) => blog.country_id === Number(countryId))
+          .map((blog, index) => (
             // <h1>{blog.blog_title}</h1>
             <BlogCard key={index} blog={blog} />
           ))
-        ) : (
-          <h1>No data available</h1>
-        )}
+      ) : (
+        <h1>No data available</h1>
+      )}
     </>
   );
 }
