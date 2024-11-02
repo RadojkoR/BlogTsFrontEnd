@@ -1,14 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import { Nav, Footer } from '../Components/Layout';
 import '../Styles/App.scss';
-import { About, Blog, BlogItem, Continent, Country, Destinations, Home, LogIn, TravelTips } from '../Pages/indexPages';
+import { About, Blog, BlogItem, Continent, Country, CreateBlog, Destinations, Home, LogIn, TravelTips } from '../Pages/indexPages';
+import BlogToolBar from '../Components/Layout/BlogToolBar';
 
 function App() {
-
 
   return (
     <div className="relative">
       <Nav />
+      <BlogToolBar />
       <div>
         <Routes>
           <Route path="/" element={<Home />} ></Route>
@@ -20,6 +21,7 @@ function App() {
           <Route path="/blog" element={<Blog />}></Route>
           <Route path="/traveltips" element={<TravelTips />}></Route>
           <Route path="/login" element={<LogIn />}></Route>
+          <Route path="/createBlog" element={<CreateBlog />}></Route>
         </Routes>
       </div>
       <Footer />
