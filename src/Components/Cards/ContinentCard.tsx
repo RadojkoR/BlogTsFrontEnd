@@ -17,8 +17,6 @@ const continentName = continent.continent_name;
 const continentImg = continent.continent_img;
 const continentId = continent.continent_id;
 const formattedContinentName = continentName.replace(/\s+/g,'');
-// console.log(continentName);
-console.log("continent image",continentImg);
 
   return (
     <article className="w-container20 flex justify-center items-center mx-auto border-2 border-blue-300">

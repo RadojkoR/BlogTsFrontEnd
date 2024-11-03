@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 interface Blog {
-  blog_id: number;
+  post_id: number;
   title: string;
   blog_img: string;
   continent_id: number;
@@ -20,15 +20,16 @@ interface Blog {
 // }
 
 function BlogItem() {
-const { blogTitle, continentId, countryId } = useParams<{
+const { blogTitle, postId, continentId, countryId } = useParams<{
   blogTitle: string | undefined;
   continentId: string | undefined;
   countryId: string | undefined;
+  postId:string | undefined;
 }>();
 
 const formattedContinentId = Number(continentId);
 const formattedContryId = Number(countryId);
-console.log(formattedContinentId);
+const formattedBlogId = Number(postId);
 
 
 const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -37,7 +38,7 @@ useEffect(() => {
   const fetchBlogs = async () => {
     try {
       const response = await axios.get("http://129.153.55.190:3001/blogs");
-      console.log("blogsItem data", response.data);
+      // console.log("blogsItem data", response.data);
       setBlogs(response.data);
     } catch (error) {
       console.error("Error fetching Blogs Data");
@@ -63,7 +64,7 @@ if (!blogTitle) {
           .filter(
             (blog) =>
               formattedContinentId == blog.continent_id &&
-              formattedContryId == blog.country_id
+              formattedContryId == blog.country_id && formattedBlogId === blog.post_id
           )
           .map((blog, index) => (
             <div key={index}>

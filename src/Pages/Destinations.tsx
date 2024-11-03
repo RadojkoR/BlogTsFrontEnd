@@ -12,7 +12,6 @@ function Destinations() {
       try {
         const response = await axios.get("http://129.153.55.190:3001");
         setData(response.data.continentsData);
-        console.log("destination Data",response.data.continentsData);
       } catch (error) {
         console.error("Error fetching data:");
       } finally {
@@ -25,7 +24,6 @@ function Destinations() {
   if (loading) {
     return <div>Loading...</div>;
   }
-  // console.log(data);
 
   return (
     <>

@@ -17,7 +17,7 @@ function App() {
           <Route path="/destinations" element={<Destinations />}></Route>
           <Route path='/destinations/:continentName/:continentId' element={<Continent/>}></Route>
           <Route path='/destinations/:continentName/:continentId/:countryName/:countryId' element={<Country/>}></Route>
-          <Route path='/destinations/:continentName/:continentId/:countryName/:countryId/:blogTitle' element={<BlogItem/>}></Route>
+          <Route path='/destinations/:continentName/:continentId/:countryName/:countryId/:blogTitle/:postId' element={<BlogItem/>}></Route>
           <Route path="/blog" element={<Blog />}></Route>
           <Route path="/traveltips" element={<TravelTips />}></Route>
           <Route path="/login" element={<LogIn />}></Route>

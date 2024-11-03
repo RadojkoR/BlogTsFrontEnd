@@ -25,8 +25,7 @@ export default function Continent() {
     const fetchCountries = async() => {
       if(continentName){
         try{
-          const response = await axios.get(`http://129.153.55.190:3001/destination`)
-          console.log("countries data", response.data);
+          const response = await axios.get(`http://129.153.55.190:3001/countries`)
           setCountries(response.data)
           
         }catch(error){

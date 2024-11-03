@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 interface Blog {
-  blog_id: number;
+  post_id: number;
   title: string;
   blog_img: string;
   continent_id: number;
@@ -25,7 +25,6 @@ function Country() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get("http://129.153.55.190:3001/blogs");
-        console.log("blogs data", response.data);
         setBlogs(response.data);
       } catch (error) {
         console.error("Error fetching Blogs Data");
@@ -40,7 +39,6 @@ function Country() {
 
   return (
     <>
-      {console.log("Ime drzave", countryName)}
       <Header
         className={`bg-${countryName}HeaderBlog bg-contain bg-center h-70vh`}
         title={countryName.toLocaleUpperCase()}
@@ -48,16 +46,18 @@ function Country() {
       <h1 className="my-20 text-center text-5xl">
         {countryName.toLocaleUpperCase()}
       </h1>
-      {blogs.length > 0 ? (
-        blogs
-          .filter((blog) => blog.country_id === Number(countryId))
-          .map((blog, index) => (
-            // <h1>{blog.blog_title}</h1>
-            <BlogCard key={index} blog={blog} />
-          ))
-      ) : (
-        <h1>No data available</h1>
-      )}
+      <section className="w-container80 flex justify-between mx-auto mb-10">
+        {blogs.length > 0 ? (
+          blogs
+            .filter((blog) => blog.country_id === Number(countryId))
+            .map((blog, index) => (
+              // <h1>{blog.blog_title}</h1>
+              <BlogCard key={index} blog={blog} />
+            ))
+        ) : (
+          <h1>No data available</h1>
+        )}
+      </section>
     </>
   );
 }

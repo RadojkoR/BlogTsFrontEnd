@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 
 interface Blog {
-    blog_id: number;
+    post_id: number;
     blog_img: string;
     title: string;
     blog_text: string;
@@ -21,11 +21,13 @@ function BlogCard({blog}: BlogProps) {
     const formattedBlogTitle = blogTitle.replace(/\s+(.)/g, (_,char) => char.toUpperCase())
                                         .replace(/^\w/, (char) => char.toLocaleLowerCase())
                                         .replace(/[.,'"::?!]/g, "");
+    const postId = blog.post_id;  
+                        
                                         
   return (
-    <article className="w-container20 flex justify-center items-center mx-auto border-2 border-blue-300">
+    <article className="w-container20 flex justify-center items-center mx-auto">
       <NavLink
-        to={formattedBlogTitle}
+        to={`${formattedBlogTitle}/${postId}`}
         className="max-w-sm rounded h-full flex flex-col justify-between items-center overflow-hidden shadow-lg border-2 border-gray-300"
       >
         <img className="w-full mb-10" src="#" alt={`${blog.title} image`} />
