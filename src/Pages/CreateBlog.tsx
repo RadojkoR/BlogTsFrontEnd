@@ -116,7 +116,7 @@ function CreateBlog() {
               }
             />
             <Buttons
-              toLink="/editContinent"
+              toLink="/deleteContinent"
               title={"Delete"}
               classes={
                 "w-24 flex justify-center border-solid border-2 bg-red-900 text-white border-red-900 py-2 px-4  transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:border-red-900 hover:bg-inherit hover:text-red-900 ms-2"
@@ -156,7 +156,7 @@ function CreateBlog() {
               }
             />
             <Buttons
-              toLink="/editContinent"
+              toLink="/deleteContinent"
               title={"Delete"}
               classes={
                 "w-24 flex justify-center border-solid border-2 bg-red-900 text-white border-red-900 py-2 px-4  transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:border-red-900 hover:bg-inherit hover:text-red-900 ms-2"
