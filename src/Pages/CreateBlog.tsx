@@ -39,7 +39,7 @@ function CreateBlog() {
     //  useEffect(() => {
     //    const fetchData = async () => {
     //      try {
-    //        const response = await axios.get("http://192.168.0.112:3001/continents");
+    //        const response = await axios.get("http://192.168.0.114:3001/continents");
     //        setData(response.data);
     //        console.log("Create Blog Continents data", response.data);
            

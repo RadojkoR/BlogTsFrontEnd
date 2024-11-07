@@ -24,7 +24,7 @@ function Country() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://192.168.0.112:3001/blogs");
+        const response = await axios.get("http://192.168.0.114:3001/blogs");
         setBlogs(response.data);
       } catch (error) {
         console.error("Error fetching Blogs Data");
