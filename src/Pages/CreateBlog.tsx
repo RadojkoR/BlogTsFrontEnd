@@ -72,8 +72,6 @@ function CreateBlog() {
       );
       
     }
-    
-
 
   return (
     <div className="flex flex-col items-center">
@@ -81,9 +79,9 @@ function CreateBlog() {
 
       <form className="w-4/5">
         {/* Continents */}
-        <section className="flex w-4/5 items-end justify-between">
+        <section className="flex w-4/5 items-end justify-between mb-7">
           <div className="flex flex-col w-1/4">
-            <label htmlFor="continents">Continents*</label>
+            <label htmlFor="continents" className='text-xl mb-2'>Continents*</label>
             <select
               name="continents"
               id="continents"
@@ -124,15 +122,15 @@ function CreateBlog() {
             />
           </div>
         </section>
-        <section className="flex w-4/5 items-end justify-between">
+        <section className="flex w-4/5 items-end justify-between mb-7">
           <div className="flex flex-col w-1/4">
-            <label htmlFor="continents">Countries*</label>
+            <label htmlFor="continents" className='text-lg mb-2'>Countries*</label>
             <select
               name="continents"
               id="continents"
               className="py-3 px-5 w-48"
             >
-              <option value="select continent">Select Country</option>
+              <option value="select country">Select Country</option>
               {countries
                 .filter((country) => country.continent_id === continentId)
                 .map((country, index) => (
@@ -156,7 +154,7 @@ function CreateBlog() {
               }
             />
             <Buttons
-              toLink="/deleteContinent"
+              toLink="/deleteCountry"
               title={"Delete"}
               classes={
                 "w-24 flex justify-center border-solid border-2 bg-red-900 text-white border-red-900 py-2 px-4  transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:border-red-900 hover:bg-inherit hover:text-red-900 ms-2"
@@ -166,7 +164,7 @@ function CreateBlog() {
         </section>
 
         <div className="flex flex-col">
-          <label htmlFor="title">Title*</label>
+          <label htmlFor="title" className='text-xl mb-2'>Title*</label>
           <input
             type="text"
             id="title"

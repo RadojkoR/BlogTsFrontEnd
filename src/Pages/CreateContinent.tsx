@@ -1,12 +1,15 @@
 import axios from "axios";
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import { useContinents } from "../Hooks";
 
 
 function CreateContinent() {
   const [continentName, setContinentName] = useState("");
   const [continentImgName, setContinentImgName]= useState("");
   const [imgFile, setImgFile] = useState<File | undefined>()
+  const navigate = useNavigate()
+  const {continents} = useContinents();
 
   const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault();
@@ -16,6 +19,13 @@ function CreateContinent() {
     
     if(!continentImgName){
       alert("Please select an image")
+    }
+
+    const isContinentExist = continents.some(continent => continent.continent_name === continentName);
+
+    if(isContinentExist) {
+      alert("Continent with this name already exists. Please choose another name");
+      return;
     }
     
     if(typeof imgFile === 'undefined') return;
@@ -32,6 +42,7 @@ function CreateContinent() {
         alert("New Continent successfull added!");
         setContinentName("");
         setContinentImgName("");
+        navigate("/createBlog");
       }
     } catch (error) {
       console.error("Error creating Continent", error);
@@ -54,7 +65,7 @@ function CreateContinent() {
 
   return (
     <section className="w-container80 mx-auto">
-      <h2 className="text-center my-5 text-5xl">CreateContinent Page</h2>
+      <h2 className="text-center my-5 text-5xl">Create Continent</h2>
       <form onSubmit={handleSubmit} className="mb-20">
         <div className="mb-3 flex flex-col">
           <label htmlFor="continentName" className="pb-2 mt-5 text-gray-600">
@@ -82,6 +93,7 @@ function CreateContinent() {
             placeholder="Continent Image"
             className="border border-gray-300 shadow p-3 w-4/5 rounded mb-5 text-gray-600 font-bold"
             onChange={handleFileChange}
+            required
           />
         </div>
         <div className="flex justify-center">

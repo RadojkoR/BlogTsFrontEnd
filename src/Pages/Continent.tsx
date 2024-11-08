@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CountryCard from "../Components/Cards/CountryCard";
+import { useContinents } from "../Hooks";
 
 interface Country {
   country_id: number;
@@ -17,6 +18,7 @@ export default function Continent() {
   const { continentName, continentId } = useParams<{ continentName: string | undefined; continentId: string | undefined }>();
   const formattedContinentName = continentName ? 
   continentName.charAt(0).toLocaleUpperCase() + continentName.slice(1) : "";
+  const {continents} = useContinents()
 
   const [countries, setCountries] = useState<Country[]>([]);
   // const [loading,setLoading] = useState(true);
@@ -36,9 +38,17 @@ export default function Continent() {
         //   setLoading(true)
         // }
       }
+      
     };
     fetchCountries()
+    
   }, [continentName])
+
+
+  const continentData = continents.map((cont) => cont.continent_id);
+  // if(continentData?.continent_id === count)
+  console.log("continent data", continentData);
+  
 
   return (
     <>
