@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Nav, Footer } from '../Components/Layout';
 import '../Styles/App.scss';
-import { About, Blog, BlogItem, Continent, Country, CreateBlog, CreateContinent, CreateCountry, DeleteContinent, Destinations, Home, LogIn, TravelTips } from '../Pages/indexPages';
+import { About, Blog, BlogItem, Continent, Country, CreateBlog, CreateContinent, CreateCountry, DeleteContinent, DeleteCountry, Destinations, Home, LogIn, TravelTips } from '../Pages/indexPages';
 import BlogToolBar from '../Components/Layout/BlogToolBar';
 
 function App() {
@@ -34,6 +34,7 @@ function App() {
           <Route path="/createContinent" element={<CreateContinent />}></Route>
           <Route path="/deleteContinent" element={<DeleteContinent />}></Route>
           <Route path="/createCountry" element={<CreateCountry />}></Route>
+          <Route path="/deleteCountry" element={<DeleteCountry />}></Route>
         </Routes>
       </div>
       <Footer />

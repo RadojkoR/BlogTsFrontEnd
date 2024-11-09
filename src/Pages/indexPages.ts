@@ -11,5 +11,6 @@ import CreateBlog from "./CreateBlog";
 import CreateContinent from "./CreateContinent";
 import CreateCountry from "./CreateCountry";
 import DeleteContinent from "./DeleteContinent";
+import DeleteCountry from "./DeleteCountry";
 
-export {Home, About, Destinations, Continent, Country,BlogItem, Blog, TravelTips, LogIn, CreateBlog, CreateContinent, CreateCountry, DeleteContinent}
+export {Home, About, Destinations, Continent, Country,BlogItem, Blog, TravelTips, LogIn, CreateBlog, CreateContinent, CreateCountry, DeleteContinent, DeleteCountry}

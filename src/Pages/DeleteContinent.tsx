@@ -45,10 +45,7 @@ function DeleteContinent() {
     <div className="w-container80 mx-auto my-24">
       <h2 className="text-center my-5 text-5xl">Delete Continent</h2>
       <form className="w-100 flex">
-        <section
-          className="flex flex-col w-2/4 px-2"
-          onChange={handleContinentChange}
-        >
+        <section className="flex flex-col w-2/4 px-2">
           <label
             htmlFor="selectContinent"
             className="text-xl mb-2 text-gray-800"
@@ -59,6 +56,7 @@ function DeleteContinent() {
             name="selectContinent"
             id="selectContinent"
             className="p-2 text-lg"
+            onChange={handleContinentChange}
           >
             <option value="select continent"> Select Continent</option>
             {continents.map((continent, index) => (
@@ -72,7 +70,7 @@ function DeleteContinent() {
             ))}
           </select>
         </section>
-        <section className="flex flex-col items-center justify-end w-2/4 px-2">
+        <section >
           <Buttons
             toLink="/createBlog"
             title={"Delete"}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useContinents } from "../Hooks";
-
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,6 +10,7 @@ function CreateCountry() {
   const [countryName, setCountryName] = useState('');
   const [countryImgFile, SetCountryImgFile] = useState<File | undefined>();
   const {continents} = useContinents();
+  const navigate = useNavigate();
 
   const handleContinentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
@@ -71,7 +72,7 @@ const handleSubmitNewCountry = async (e: React.FormEvent) => {
     }
     
   }
-  
+  navigate("/createBlog");
 }
 
 
