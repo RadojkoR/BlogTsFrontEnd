@@ -34,9 +34,6 @@ export default function Continent() {
           console.error("Error fetching countries:", error);
           
         }
-        // finally{
-        //   setLoading(true)
-        // }
       }
       
     };

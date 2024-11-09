@@ -49,7 +49,10 @@ function DeleteContinent() {
           className="flex flex-col w-2/4 px-2"
           onChange={handleContinentChange}
         >
-          <label htmlFor="selectContinent" className="text-xl mb-3">
+          <label
+            htmlFor="selectContinent"
+            className="text-xl mb-2 text-gray-800"
+          >
             Select a Continent *
           </label>
           <select

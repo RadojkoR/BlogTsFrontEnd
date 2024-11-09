@@ -68,7 +68,7 @@ function CreateContinent() {
       <h2 className="text-center my-5 text-5xl">Create Continent</h2>
       <form onSubmit={handleSubmit} className="mb-20">
         <div className="mb-3 flex flex-col">
-          <label htmlFor="continentName" className="pb-2 mt-5 text-gray-600">
+          <label htmlFor="continentName" className="text-xl mb-2 text-gray-800">
             Continent Name *
           </label>
           <input
@@ -83,7 +83,7 @@ function CreateContinent() {
           />
         </div>
         <div className="mb-3 flex flex-col">
-          <label htmlFor="continentImage" className="pb-2 mt-1 text-gray-600">
+          <label htmlFor="continentImage" className="text-xl mb-2 text-gray-800">
             Continent Image *
           </label>
           <input

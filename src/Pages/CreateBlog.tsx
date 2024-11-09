@@ -81,7 +81,9 @@ function CreateBlog() {
         {/* Continents */}
         <section className="flex w-4/5 items-end justify-between mb-7">
           <div className="flex flex-col w-1/4">
-            <label htmlFor="continents" className='text-xl mb-2'>Continents*</label>
+            <label htmlFor="continents" className="text-xl mb-2 text-gray-800">
+              Continents*
+            </label>
             <select
               name="continents"
               id="continents"
@@ -124,7 +126,9 @@ function CreateBlog() {
         </section>
         <section className="flex w-4/5 items-end justify-between mb-7">
           <div className="flex flex-col w-1/4">
-            <label htmlFor="continents" className='text-lg mb-2'>Countries*</label>
+            <label htmlFor="continents" className="text-xl mb-2 text-gray-800">
+              Countries*
+            </label>
             <select
               name="continents"
               id="continents"
@@ -164,7 +168,9 @@ function CreateBlog() {
         </section>
 
         <div className="flex flex-col">
-          <label htmlFor="title" className='text-xl mb-2'>Title*</label>
+          <label htmlFor="title" className="text-xl mb-2 text-gray-800">
+            Title*
+          </label>
           <input
             type="text"
             id="title"
@@ -174,7 +180,9 @@ function CreateBlog() {
           />
         </div>
         <div className="flex flex-col">
-          <label htmlFor="content">Content*</label>
+          <label htmlFor="content" className="text-xl mb-2 text-gray-800">
+            Content*
+          </label>
           {/* <Editor /> */}
         </div>
       </form>
