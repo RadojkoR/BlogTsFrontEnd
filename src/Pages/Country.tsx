@@ -1,6 +1,6 @@
 import BlogCard from "../Components/Cards/BlogCard";
 import { Header } from "../Components/Layout";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -15,10 +15,7 @@ interface Blog {
 }
 
 function Country() {
-  const { countryName, countryId } = useParams<{
-    countryName: string | undefined;
-    countryId: string | undefined;
-  }>();
+  const {countryName, countryId} = useLocation().state || {}
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {

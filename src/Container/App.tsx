@@ -16,15 +16,15 @@ function App() {
           <Route path="/about" element={<About />}></Route>
           <Route path="/destinations" element={<Destinations />}></Route>
           <Route
-            path="/destinations/:continentName/:continentId"
+            path="/destinations/:continentName"
             element={<Continent />}
           ></Route>
           <Route
-            path="/destinations/:continentName/:continentId/:countryName/:countryId"
+            path="/destinations/:continentName/:countryName/"
             element={<Country />}
           ></Route>
           <Route
-            path="/destinations/:continentName/:continentId/:countryName/:countryId/:blogTitle/:postId"
+            path="/destinations/:continentName/:countryName/:blogTitle"
             element={<BlogItem />}
           ></Route>
           <Route path="/blog" element={<Blog />}></Route>

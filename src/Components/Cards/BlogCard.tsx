@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-// import { useParams } from "react-router-dom";
 
 interface Blog {
     post_id: number;
@@ -21,13 +20,13 @@ function BlogCard({blog}: BlogProps) {
     const formattedBlogTitle = blogTitle.replace(/\s+(.)/g, (_,char) => char.toUpperCase())
                                         .replace(/^\w/, (char) => char.toLocaleLowerCase())
                                         .replace(/[.,'"::?!]/g, "");
-    const postId = blog.post_id;  
+    // const postId = blog.post_id;  
                         
                                         
   return (
     <article className="w-container20 flex justify-center items-center mx-auto">
       <NavLink
-        to={`${formattedBlogTitle}/${postId}`}
+        to={`${formattedBlogTitle}`}
         className="max-w-sm rounded h-full flex flex-col justify-between items-center overflow-hidden shadow-lg border-2 border-gray-300"
       >
         <img className="w-full mb-10" src="#" alt={`${blog.title} image`} />

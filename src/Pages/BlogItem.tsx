@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 interface Blog {
   post_id: number;
+  blog_title: string;
   title: string;
   blog_img: string;
   continent_id: number;
@@ -57,7 +58,7 @@ if (!blogTitle) {
         className="bg-bgHeaderBlog h-60vh bg-contain bg-center"
         title={blogTitle.toLocaleUpperCase()}
       />
-      {/* <h2 className="my-20 text-center text-5xl">{blog_Id}</h2> */}
+      <h2 className="my-20 text-center text-5xl">{blogTitle}</h2>
 
       {blogs.length > 0 ? (
         blogs
@@ -69,7 +70,7 @@ if (!blogTitle) {
           .map((blog, index) => (
             <div key={index}>
               <h1 className="my-20 text-center text-5xl">
-                {/* {blog.blog_title.toLocaleUpperCase()} */}
+                {blog.blog_title.toLocaleUpperCase()}
                 {blog.title}
               </h1>
               <section className="w-container80 mx-auto">
