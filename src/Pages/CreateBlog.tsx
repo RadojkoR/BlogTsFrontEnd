@@ -12,7 +12,8 @@ import Modal from "react-modal";
 // import axios from 'axios';
 import Buttons from '../Components/Buttons/Buttons';
 import { useContinents, useCountries } from '../Hooks';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
 Modal.setAppElement("#root");
 
@@ -61,6 +62,8 @@ function CreateBlog() {
 
     const [continentId, setContinentId] = useState<number | null>()
     const [countryId, setCountryId] = useState<number | null>()
+    const [blogTitle, SetBlogTitle] = useState("");
+    const [content, setContent] = useState("");
 
     if (!continents || !countries) {
       return <div>Loading...</div>;
@@ -78,7 +81,36 @@ function CreateBlog() {
       setCountryId(countryIdSel)
     }
 
-    console.log(continentId, countryId);
+    const handleSubmitBlog = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+         if (!continentId || !countryId || !blogTitle || !content) {
+           alert("Molimo vas da popunite sva obavezna polja.");
+           return;
+         }
+
+         
+  const blogData = {
+    continent_id: continentId,
+    country_id: countryId,
+    title: blogTitle, 
+    content: content
+  };
+
+        console.log("form is submited: ","continent id is: ", continentId,"country id Is: ", countryId, "And Title is: ", blogTitle);
+
+        try{
+           await axios.post("http://192.168.0.114:3001/blogs", blogData)
+        }catch(error){
+          console.error("Error Creating New Blog", error.response || error.message || error);
+          alert("An Error occurred while adding New Blog.");
+         
+          
+        }
+        
+        
+    }
+    
     
 
 
@@ -86,7 +118,7 @@ function CreateBlog() {
     <div className="flex flex-col items-center">
       <h2 className="text-center mt-10 mb-5 text-5xl">Create New Blog</h2>
 
-      <form className="w-4/5">
+      <form onSubmit={handleSubmitBlog} className="w-4/5 my-14">
         {/* Continents */}
         <section className="flex w-4/5 items-end justify-between mb-7">
           <div className="flex flex-col w-1/4">
@@ -149,7 +181,11 @@ function CreateBlog() {
               {countries
                 .filter((country) => country.continent_id === continentId)
                 .map((country, index) => (
-                  <option key={index} value={country.country_name} data-country-id={country.country_id}>
+                  <option
+                    key={index}
+                    value={country.country_name}
+                    data-country-id={country.country_id}
+                  >
                     {country.country_name}
                   </option>
                 ))}
@@ -188,14 +224,18 @@ function CreateBlog() {
             className="border border-gray-300 shadow p-3 w-4/5 rounded mb-5"
             placeholder="Title"
             required
+            onChange={(e) => SetBlogTitle(e.target.value)}
           />
         </div>
         <div className="flex flex-col">
           <label htmlFor="content" className="text-xl mb-2 text-gray-800">
             Content*
           </label>
-          {/* <Editor /> */}
+          <input type="text" id='content' placeholder='Content' required className="border border-gray-300 shadow p-3 w-4/5 rounded mb-5" onChange={(e) => setContent(e.target.value)}/>
         </div>
+        <button
+            className="w-2/4 flex justify-center border-solid border-2 bg-blue-700 text-white border-blue-700 py-2 px-4  transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:border-blue-700 hover:bg-inherit hover:text-blue-700 mt-10"
+          >Create</button>
       </form>
     </div>
   );
