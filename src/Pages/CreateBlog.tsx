@@ -60,18 +60,27 @@ function CreateBlog() {
     const {countries} = useCountries();
 
     const [continentId, setContinentId] = useState<number | null>()
+    const [countryId, setCountryId] = useState<number | null>()
+
+    if (!continents || !countries) {
+      return <div>Loading...</div>;
+    }
 
     const handleContinentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      console.log( e.target.selectedOptions[0].getAttribute('data-continent-id'))
-      const selectedContinentId =
-        e.target.selectedOptions[0].getAttribute("data-continent-id");
-
-      // Ako `selectedContinentId` nije `null`, konvertujemo ga u broj, u suprotnom postavljamo `null`
-      setContinentId(
-        selectedContinentId ? parseInt(selectedContinentId, 10) : null
-      );
-      
+      e.preventDefault()
+      const continentIdSel = Number(e.target.selectedOptions[0].getAttribute('data-continent-id'))
+      setContinentId(continentIdSel);
     }
+
+    const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      e.preventDefault();
+      const countryIdSel = Number(e.target.selectedOptions[0].getAttribute("data-country-id"));
+      setCountryId(countryIdSel)
+    }
+
+    console.log(continentId, countryId);
+    
+
 
   return (
     <div className="flex flex-col items-center">
@@ -130,15 +139,17 @@ function CreateBlog() {
               Countries*
             </label>
             <select
-              name="continents"
-              id="continents"
+              name="countries"
+              id="countries"
               className="py-3 px-5 w-48"
+              onChange={handleCountryChange}
+              disabled={!continentId}
             >
               <option value="select country">Select Country</option>
               {countries
                 .filter((country) => country.continent_id === continentId)
                 .map((country, index) => (
-                  <option key={index} value={country.country_name}>
+                  <option key={index} value={country.country_name} data-country-id={country.country_id}>
                     {country.country_name}
                   </option>
                 ))}
