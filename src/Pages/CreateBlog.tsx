@@ -14,6 +14,7 @@ import Buttons from '../Components/Buttons/Buttons';
 import { useContinents, useCountries } from '../Hooks';
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 Modal.setAppElement("#root");
 
@@ -64,6 +65,7 @@ function CreateBlog() {
     const [countryId, setCountryId] = useState<number | null>()
     const [blogTitle, SetBlogTitle] = useState("");
     const [content, setContent] = useState("");
+    const navigate = useNavigate();
 
     if (!continents || !countries) {
       return <div>Loading...</div>;
@@ -87,27 +89,25 @@ function CreateBlog() {
          if (!continentId || !countryId || !blogTitle || !content) {
            alert("Molimo vas da popunite sva obavezna polja.");
            return;
-         }
-
+         }      
          
-  const blogData = {
-    continent_id: continentId,
-    country_id: countryId,
-    title: blogTitle, 
-    content: content
-  };
+        const blogData = {
+          continent_id: continentId,
+          country_id: countryId,
+          title: blogTitle, 
+          content: content
+        };
 
         console.log("form is submited: ","continent id is: ", continentId,"country id Is: ", countryId, "And Title is: ", blogTitle);
 
         try{
            await axios.post("http://192.168.0.114:3001/blogs", blogData)
         }catch(error){
-          console.error("Error Creating New Blog", error.response || error.message || error);
-          alert("An Error occurred while adding New Blog.");
-         
-          
+          console.error("Error Creating New Blog", error);
+          alert("An Error occurred while adding New Blog.");  
         }
         
+        navigate('/')
         
     }
     
