@@ -1,62 +1,40 @@
-// import { useState } from "react";
-// import {Editor} from "react-draft-wysiwyg";
-// import { EditorState } from "draft-js";
-// import { convertToRaw } from "draft-js";
-// import draftToHtml from "draftjs-to-html";
-import'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-// import { Link } from 'react-router-dom';
-// import ModalComponent from "../Components/Modal/ModalComponent"
-// import { useEffect, useState } from 'react';
-// import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
-// import axios from 'axios';
 import Buttons from '../Components/Buttons/Buttons';
 import { useContinents, useCountries } from '../Hooks';
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import {Editor} from "react-draft-wysiwyg";
+import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
 Modal.setAppElement("#root");
 
-// interface ContinentData {
-//   continent_id:number;
+
+// function uploadImageCallBack(file) {
+//   return new Promise((resolve, reject) => {
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("POST", "https://api.imgur.com/3/image");
+//     xhr.setRequestHeader("Authorization", "Client-ID XXXXX");
+//     const data = new FormData();
+//     data.append("image", file);
+//     xhr.send(data);
+//     xhr.addEventListener("load", () => {
+//       const response = JSON.parse(xhr.responseText);
+//       resolve(response);
+//     });
+//     xhr.addEventListener("error", () => {
+//       const error = JSON.parse(xhr.responseText);
+//       reject(error);
+//     });
+//   });
 // }
 
+
+
 function CreateBlog() {
-  // const [isModalOpen, setIsModalOpen] = useState(false)
-    // const [editorState, setEditorState] = useState(EditorState.createEmpty());
-    // const [title, setTitle] = useState<string>('');
-    // const [content, setContent] = useState<string>("");
-    // const navigate = useNavigate();
-
-    //  const handleEditorStateChange = (state: EditorState) => {
-    //    setEditorState(state);
-    //  };
-
-    // const openModal = () => setIsModalOpen(true);
-    // const closeModal = () => setIsModalOpen(false);
-
-    //  const [data, setData] = useState<Continent[]>([]);
-    //  const [loading, setloading] = useState(true);
-    //  useEffect(() => {
-    //    const fetchData = async () => {
-    //      try {
-    //        const response = await axios.get("http://192.168.0.114:3001/continents");
-    //        setData(response.data);
-    //        console.log("Create Blog Continents data", response.data);
-           
-    //      } catch (error) {
-    //        console.error("Error fetching data:");
-    //      } finally {
-    //        setloading(false);
-    //      }
-    //    };
-
-    //    fetchData();
-    //  }, []);
-    //  if (loading) {
-    //    return <div>Loading...</div>;
-    //  }
+ 
+ 
+  
 
     const {continents} = useContinents();
     const {countries} = useCountries();
@@ -110,6 +88,31 @@ function CreateBlog() {
         navigate('/')
         
     }
+
+
+    // EDITOR
+
+     function uploadImageCallBack(file: File) {
+       return new Promise((resolve) => {
+         const imageURL = URL.createObjectURL(file);
+         resolve({ data: { link: imageURL } });
+
+        //  const formData = new FormData();
+        //  formData.append("image", file);
+
+        //  axios
+        //    .post("http://localhost:3001/upload-image", formData, {
+        //      headers: { "Content-Type": "multipart/form-data" },
+        //    })
+        //    .then((response) => {
+        //      console.log("Image uploaded successfully:", response.data);
+        //    })
+        //    .catch((error) => {
+        //      console.error("Error uploading image:", error);
+        //    });
+       });
+     }
+
     
     
 
@@ -231,11 +234,37 @@ function CreateBlog() {
           <label htmlFor="content" className="text-xl mb-2 text-gray-800">
             Content*
           </label>
-          <input type="text" id='content' placeholder='Content' required className="border border-gray-300 shadow p-3 w-4/5 rounded mb-5" onChange={(e) => setContent(e.target.value)}/>
+          <input
+            type="text"
+            id="content"
+            placeholder="Content"
+            required
+            className="border border-gray-300 shadow p-3 w-4/5 rounded mb-5"
+            onChange={(e) => setContent(e.target.value)}
+          />
         </div>
-        <button
-            className="w-2/4 flex justify-center border-solid border-2 bg-blue-700 text-white border-blue-700 py-2 px-4  transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:border-blue-700 hover:bg-inherit hover:text-blue-700 mt-10"
-          >Create</button>
+        {/* EDITOR */}
+
+        
+
+        <Editor
+          wrapperClassName="wrapper-class border border-2 h-auto min-h-[300px]"
+          editorClassName="editor-class"
+          toolbarClassName="toolbar-class"
+          toolbar={{
+            image: {
+              uploadEnabled: true,
+              uploadCallback: uploadImageCallBack,
+              previewImage: true, // Omogućava prikaz slike u editoru
+              alt: { present: true, mandatory: true },
+              inputAccept: "image/jpg, image/png, image/gif",
+            },
+          }}
+        />
+
+        <button className="w-2/4 flex justify-center border-solid border-2 bg-blue-700 text-white border-blue-700 py-2 px-4  transition duration-300 ease-in-out focus:outline-none focus:shadow-outline hover:border-blue-700 hover:bg-inherit hover:text-blue-700 mt-10">
+          Create
+        </button>
       </form>
     </div>
   );

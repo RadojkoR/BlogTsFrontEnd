@@ -7,4 +7,7 @@ export default defineConfig({
     port: 3000
   },
   plugins: [react()],
+  optimizeDeps: {
+    include: ['dayjs'], // Ensure dayjs is properly bundled
+  },
 })
