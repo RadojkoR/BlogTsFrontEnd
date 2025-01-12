@@ -28,7 +28,7 @@ function DeleteContinent() {
     }
 
     try{
-      const response = await axios.delete(`http://192.168.0.114:3001/continents/${selectedContinentId}`);
+      const response = await axios.delete(`http://192.168.0.113:3001/continents/${selectedContinentId}`);
       console.log(response.data);
       alert("Continent deleted successfully!!!")
       

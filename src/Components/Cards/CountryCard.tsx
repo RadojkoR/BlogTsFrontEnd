@@ -29,7 +29,7 @@ function CountryCard({ country, index }: CountryProps) {
       >
         <img
           className="w-full mb-10"
-          src={`http://192.168.0.114:3001${countryImg}`}
+          src={`http://192.168.0.113:3001${countryImg}`}
           alt={`${countryName} image`}
         />
         <h3 className="capitalize font-bold text-3xl pb-5">

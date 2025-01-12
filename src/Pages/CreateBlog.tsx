@@ -79,7 +79,7 @@ function CreateBlog() {
         console.log("form is submited: ","continent id is: ", continentId,"country id Is: ", countryId, "And Title is: ", blogTitle);
 
         try{
-           await axios.post("http://192.168.0.114:3001/blogs", blogData)
+           await axios.post("http://192.168.0.113:3001/blogs", blogData)
         }catch(error){
           console.error("Error Creating New Blog", error);
           alert("An Error occurred while adding New Blog.");  

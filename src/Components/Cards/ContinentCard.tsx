@@ -26,7 +26,7 @@ const formattedContinentName = continentName.replace(/\s+/g,'');
         key={index}
         state={{continentId, continentName}}
       >
-        <img className="w-full mb-10" src={`http://192.168.0.114:3001${continentImg}`} alt={`${continentName} image`} />
+        <img className="w-full mb-10" src={`http://192.168.0.113:3001${continentImg}`} alt={`${continentName} image`} />
         <h3 className="capitalize font-bold text-3xl pb-5">
           {continentName.toUpperCase()}
         </h3>

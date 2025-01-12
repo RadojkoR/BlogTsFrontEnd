@@ -19,7 +19,7 @@ function DeleteCountry() {
     const handleDeleteCountry = async (e: React.MouseEvent<HTMLAnchorElement>) => {
        e.preventDefault()
         try{
-            await axios.delete(`http://192.168.0.114:3001/countries/${selectedCountryId}`);
+            await axios.delete(`http://192.168.0.113:3001/countries/${selectedCountryId}`);
             alert("Country deleted successfully!!!")
         }catch(error){
             console.error("Error deleting Country", error);

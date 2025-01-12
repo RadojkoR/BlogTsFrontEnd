@@ -53,7 +53,7 @@ const handleSubmitNewCountry = async (e: React.FormEvent) => {
    formData.append("countryImgFile", countryImgFile);
   
   try{
-    const response = await axios.post("http://192.168.0.114:3001/countries", formData);
+    const response = await axios.post("http://192.168.0.113:3001/countries", formData);
     if(response.status === 200) {
       alert("New Country successfull added!");
       

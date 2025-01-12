@@ -36,7 +36,7 @@ function CreateContinent() {
 
     try {
       const response = await axios.post(
-        "http://192.168.0.114:3001/continents",
+        "http://192.168.0.113:3001/continents",
         formData);
       if (response.status === 200) {
         alert("New Continent successfull added!");
