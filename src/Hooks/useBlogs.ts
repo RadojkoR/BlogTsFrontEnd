@@ -15,7 +15,7 @@ function useBlogs() {
     useEffect(() => {
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("http://192.168.0.113:3001/blogs");
+      const response = await axios.get("https://192.168.0.113:3001/blogs");
       console.log("blogsItem data", response.data);
       setBlogs(response.data);
     } catch (error) {
